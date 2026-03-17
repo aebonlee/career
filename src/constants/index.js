@@ -103,9 +103,9 @@ export const NAV_LINKS = [
       { label: '멘토 소개', path: '/mentors', icon: 'fa-solid fa-user-tie' },
       { label: '온라인 강의', path: '/courses', icon: 'fa-solid fa-video' },
       { label: '1:1 맞춤 멘토링', path: '/mentoring', icon: 'fa-solid fa-comments' },
+      { label: '회사 소개', path: '/about', icon: 'fa-solid fa-building-columns' },
     ],
   },
-  { label: '소개', path: '/about' },
 ];
 
 export const BREAKPOINTS = {
