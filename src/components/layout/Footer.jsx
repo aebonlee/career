@@ -29,6 +29,7 @@ export default function Footer() {
             <h4 className="footer__heading">안내</h4>
             <Link to="#" className="footer__link">이용약관</Link>
             <Link to="#" className="footer__link">개인정보처리방침</Link>
+            <Link to="/guides" className="footer__link">학습가이드</Link>
             <Link to="/about" className="footer__link">소개</Link>
           </div>
 

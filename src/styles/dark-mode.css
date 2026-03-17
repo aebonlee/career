@@ -106,3 +106,34 @@
 [data-theme="dark"] ::selection {
   background: var(--primary-dark);
 }
+
+/* Guide pages */
+[data-theme="dark"] .guide-category-card,
+[data-theme="dark"] .guide-topic-card {
+  background: var(--bg-light);
+  border-color: var(--border-medium);
+}
+
+[data-theme="dark"] .guide-detail__callout--tip {
+  background: rgba(5, 150, 105, 0.12);
+}
+
+[data-theme="dark"] .guide-detail__callout--warning {
+  background: rgba(217, 119, 6, 0.12);
+}
+
+[data-theme="dark"] .guide-detail__example-item--good {
+  background: rgba(5, 150, 105, 0.1);
+}
+
+[data-theme="dark"] .guide-detail__example-item--bad {
+  background: rgba(220, 38, 38, 0.1);
+}
+
+[data-theme="dark"] .guide-detail__checklist {
+  background: var(--bg-light);
+}
+
+[data-theme="dark"] .guide-detail__nav-btn {
+  border-color: var(--border-medium);
+}

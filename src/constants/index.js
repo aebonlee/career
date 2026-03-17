@@ -92,6 +92,7 @@ export const NAV_LINKS = [
   { label: '홈', path: '/' },
   { label: '서비스', path: '/services' },
   { label: '멘토', path: '/mentors' },
+  { label: '학습가이드', path: '/guides' },
   { label: '소개', path: '/about' },
 ];
 

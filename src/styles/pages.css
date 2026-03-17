@@ -987,3 +987,435 @@
     text-align: left;
   }
 }
+
+/* ============================================
+   Guide Pages
+   ============================================ */
+
+/* Category Grid */
+.guides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+.guide-category-card {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  padding: 32px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.guide-category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.guide-category-card__icon {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.guide-category-card__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.guide-category-card__desc {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 16px;
+}
+
+.guide-category-card__count {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* Breadcrumb */
+.guide-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.guide-breadcrumb a {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.guide-breadcrumb a:hover {
+  color: var(--primary);
+}
+
+.guide-breadcrumb__sep {
+  color: var(--text-muted);
+}
+
+.guide-breadcrumb span:last-child {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Topic Cards */
+.guide-topics-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 800px;
+}
+
+.guide-topic-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  padding: 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.guide-topic-card:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+}
+
+.guide-topic-card__number {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  opacity: 0.3;
+  flex-shrink: 0;
+  width: 40px;
+  text-align: center;
+}
+
+.guide-topic-card__body {
+  flex: 1;
+}
+
+.guide-topic-card__title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+}
+
+.guide-topic-card__desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.guide-topic-card__arrow {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.guide-topic-card:hover .guide-topic-card__arrow {
+  transform: translateX(4px);
+  color: var(--primary);
+}
+
+/* Detail Layout */
+.guide-detail-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* Sidebar */
+.guide-sidebar {
+  position: sticky;
+  top: calc(var(--nav-height) + 24px);
+}
+
+.guide-sidebar__title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border-light);
+  color: var(--text-primary);
+}
+
+.guide-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.guide-sidebar__link {
+  display: block;
+  padding: 8px 12px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s;
+  line-height: 1.4;
+}
+
+.guide-sidebar__link:hover {
+  background: var(--bg-light);
+  color: var(--text-primary);
+}
+
+.guide-sidebar__link--active {
+  background: var(--primary-bg);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Detail Content */
+.guide-detail__content {
+  max-width: 720px;
+  min-width: 0;
+}
+
+.guide-detail__heading {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.guide-detail__subheading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 32px;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.guide-detail__paragraph {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.guide-detail__list {
+  margin: 0 0 16px 20px;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.guide-detail__list li {
+  margin-bottom: 4px;
+}
+
+/* Callouts (Tip / Warning) */
+.guide-detail__callout {
+  display: flex;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  margin: 16px 0;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.guide-detail__callout p {
+  margin: 0;
+}
+
+.guide-detail__callout-icon {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+}
+
+.guide-detail__callout--tip {
+  background: var(--success-light);
+  border-left: 4px solid var(--success);
+  color: var(--text-primary);
+}
+
+.guide-detail__callout--warning {
+  background: var(--warning-light);
+  border-left: 4px solid var(--warning);
+  color: var(--text-primary);
+}
+
+/* Example (Good / Bad) */
+.guide-detail__example {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.guide-detail__example-item {
+  padding: 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.guide-detail__example-item p {
+  margin: 0;
+}
+
+.guide-detail__example-label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 0.8125rem;
+}
+
+.guide-detail__example-item--good {
+  background: var(--success-light);
+  border: 1px solid var(--success);
+}
+
+.guide-detail__example-item--bad {
+  background: var(--error-light);
+  border: 1px solid var(--error);
+}
+
+/* Checklist */
+.guide-detail__checklist {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+  background: var(--bg-light);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+}
+
+.guide-detail__checklist li {
+  padding: 6px 0;
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.guide-detail__checklist li::before {
+  content: '☐ ';
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* Quote */
+.guide-detail__quote {
+  margin: 16px 0;
+  padding: 16px 24px;
+  border-left: 4px solid var(--primary);
+  background: var(--primary-bg);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-style: italic;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* Prev/Next Navigation */
+.guide-detail__nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 2px solid var(--border-light);
+}
+
+.guide-detail__nav-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 20px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s;
+  max-width: 48%;
+}
+
+.guide-detail__nav-btn:hover {
+  border-color: var(--primary);
+  background: var(--primary-bg);
+}
+
+.guide-detail__nav-btn--next {
+  text-align: right;
+  margin-left: auto;
+}
+
+.guide-detail__nav-label {
+  font-size: 0.8125rem;
+  color: var(--text-light);
+}
+
+.guide-detail__nav-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Compact page header for detail */
+.page-header--compact {
+  padding: 24px 0 8px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .guide-detail-layout {
+    grid-template-columns: 1fr;
+  }
+  .guide-sidebar {
+    position: static;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 16px;
+    margin-bottom: 8px;
+  }
+  .guide-sidebar__nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .guide-sidebar__link {
+    padding: 6px 10px;
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .guides-grid {
+    grid-template-columns: 1fr;
+  }
+  .guide-detail__example {
+    grid-template-columns: 1fr;
+  }
+  .guide-detail__nav {
+    flex-direction: column;
+  }
+  .guide-detail__nav-btn {
+    max-width: 100%;
+  }
+  .guide-detail__nav-btn--next {
+    text-align: left;
+  }
+}
