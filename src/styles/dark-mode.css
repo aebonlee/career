@@ -15,13 +15,14 @@
   --border-medium: #4B5563;
   --glass-bg: rgba(17, 24, 39, 0.85);
   --glass-border: rgba(255, 255, 255, 0.08);
-  --primary: #4A8FE7;
-  --primary-dark: #2B6CC4;
+  --primary: #60A5FA;
+  --primary-dark: #3B82F6;
   --primary-light: #93C5FD;
-  --primary-bg: rgba(74, 143, 231, 0.1);
-  --primary-gradient: linear-gradient(135deg, #1A5AC8 0%, #4A8FE7 100%);
-  --hero-gradient: linear-gradient(135deg, #0A2D6E 0%, #122870 50%, #172D58 100%);
-  --card-gradient: linear-gradient(145deg, rgba(74, 143, 231, 0.05) 0%, rgba(74, 143, 231, 0.12) 100%);
+  --primary-bg: rgba(96, 165, 250, 0.1);
+  --primary-gradient: linear-gradient(135deg, #3B82F6 0%, #A78BFA 100%);
+  --hero-gradient: linear-gradient(135deg, #0F2167 0%, #17154A 50%, #0B0F1F 100%);
+  --hero-gradient-dark: linear-gradient(135deg, #0A1845 0%, #100F3A 50%, #080B19 100%);
+  --card-gradient: linear-gradient(145deg, rgba(96, 165, 250, 0.05) 0%, rgba(167, 139, 250, 0.1) 100%);
   --footer-gradient: linear-gradient(180deg, #0F172A 0%, #030712 100%);
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -39,9 +40,27 @@
 }
 
 [data-theme="dark"] .navbar__dropdown,
-[data-theme="dark"] .navbar__nav-dropdown {
+[data-theme="dark"] .navbar__nav-dropdown,
+[data-theme="dark"] .navbar__toolbar {
   background: rgba(31, 41, 55, 0.95);
   border-color: var(--border-medium);
+}
+
+[data-theme="dark"] .navbar__dropdown::before,
+[data-theme="dark"] .navbar__nav-dropdown::before,
+[data-theme="dark"] .navbar__toolbar::before {
+  background: rgba(31, 41, 55, 0.95);
+  border-color: var(--border-medium);
+}
+
+[data-theme="dark"] .navbar__toolbar-btn {
+  border-color: var(--border-medium);
+}
+
+[data-theme="dark"] .navbar__toolbar-item:hover,
+[data-theme="dark"] .navbar__nav-dropdown-item:hover,
+[data-theme="dark"] .navbar__dropdown-item:hover {
+  background: rgba(96, 165, 250, 0.08);
 }
 
 /* Cards */
@@ -63,7 +82,7 @@
 
 /* Hero particles */
 [data-theme="dark"] .hero__particle {
-  background: rgba(74, 143, 231, 0.25);
+  background: rgba(96, 165, 250, 0.25);
 }
 
 /* Form inputs */

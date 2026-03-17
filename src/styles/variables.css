@@ -1,25 +1,25 @@
 /* ============================================
-   상담공간 (Counseling Space) - CSS Variables
-   Design System based on DreamIT
+   Career Navigator - CSS Variables
+   Design System aligned with Edu Hub
    ============================================ */
 
 :root {
   /* Primary Colors */
-  --primary: #0046C8;
-  --primary-dark: #002E8A;
-  --primary-light: #4A8FE7;
-  --primary-bg: rgba(0, 70, 200, 0.06);
+  --primary: #2563EB;
+  --primary-dark: #1D4ED8;
+  --primary-light: #60A5FA;
+  --primary-bg: rgba(37, 99, 235, 0.06);
 
   /* Backgrounds */
   --bg-white: #FFFFFF;
-  --bg-light: #F5F7FA;
-  --bg-medium: #E8EDF2;
+  --bg-light: #F8FAFC;
+  --bg-medium: #F1F5F9;
   --bg-dark: #1A1F36;
 
   /* Text */
   --text-primary: #111827;
-  --text-secondary: #4B5563;
-  --text-light: #6B7280;
+  --text-secondary: #64748B;
+  --text-light: #94A3B8;
   --text-white: #FFFFFF;
   --text-muted: #9CA3AF;
 
@@ -29,34 +29,34 @@
   --border-focus: var(--primary);
 
   /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.04);
-  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
 
   /* Glassmorphism */
-  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-bg: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(255, 255, 255, 0.3);
-  --glass-blur: 12px;
+  --glass-blur: 16px;
 
   /* Gradients */
-  --primary-gradient: linear-gradient(135deg, #0046C8 0%, #4A8FE7 100%);
-  --accent-gradient: linear-gradient(135deg, #002E8A 0%, #0046C8 50%, #4A8FE7 100%);
-  --hero-gradient: linear-gradient(135deg, #0046C8 0%, #002E8A 50%, #1E3A5F 100%);
-  --hero-gradient-dark: linear-gradient(135deg, #0A2D6E 0%, #122870 50%, #172D58 100%);
+  --primary-gradient: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+  --accent-gradient: linear-gradient(135deg, #1D4ED8 0%, #2563EB 50%, #7C3AED 100%);
+  --hero-gradient: linear-gradient(135deg, #1E3A8A 0%, #1E1B4B 50%, #0F172A 100%);
+  --hero-gradient-dark: linear-gradient(135deg, #0F2167 0%, #17154A 50%, #0B0F1F 100%);
   --footer-gradient: linear-gradient(180deg, #1A1F36 0%, #0D1117 100%);
-  --card-gradient: linear-gradient(145deg, rgba(0, 70, 200, 0.03) 0%, rgba(74, 143, 231, 0.08) 100%);
+  --card-gradient: linear-gradient(145deg, rgba(37, 99, 235, 0.03) 0%, rgba(124, 58, 237, 0.06) 100%);
 
   /* Radii */
   --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
   --radius-full: 9999px;
 
   /* Spacing */
-  --nav-height: 72px;
-  --section-padding: 80px;
+  --nav-height: 80px;
+  --section-padding: 72px;
   --container-max: 1320px;
 
   /* Transitions */

@@ -1,6 +1,6 @@
 import { cn, getInitials } from '../../utils';
 
-const colors = ['#0046C8', '#059669', '#D97706', '#DC2626', '#7C3AED', '#DB2777'];
+const colors = ['#2563EB', '#059669', '#D97706', '#DC2626', '#7C3AED', '#DB2777'];
 
 function getColor(name) {
   if (!name) return colors[0];

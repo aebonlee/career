@@ -16,6 +16,8 @@ export default function Navbar() {
   const [navDropdown, setNavDropdown] = useState(null);
   const navDropdownRef = useRef(null);
   const [mobileExpanded, setMobileExpanded] = useState(null);
+  const [toolbarOpen, setToolbarOpen] = useState(false);
+  const toolbarRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -27,6 +29,9 @@ export default function Navbar() {
     const onClickOutside = (e) => {
       if (navDropdownRef.current && !navDropdownRef.current.contains(e.target)) {
         setNavDropdown(null);
+      }
+      if (toolbarRef.current && !toolbarRef.current.contains(e.target)) {
+        setToolbarOpen(false);
       }
     };
     document.addEventListener('mousedown', onClickOutside);
@@ -146,9 +151,32 @@ export default function Navbar() {
 
         {/* Right actions */}
         <div className="navbar__actions">
-          <button className="navbar__theme-btn" onClick={toggleTheme}>
-            <i className={theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun'} />
-          </button>
+          {/* Settings gear */}
+          <div className="navbar__toolbar-wrap" ref={toolbarRef}>
+            <button
+              className={cn('navbar__toolbar-btn', toolbarOpen && 'navbar__toolbar-btn--active')}
+              onClick={() => setToolbarOpen(!toolbarOpen)}
+              aria-label="설정 메뉴"
+            >
+              <i className="fa-solid fa-gear" />
+            </button>
+            {toolbarOpen && (
+              <div className="navbar__toolbar">
+                <button className="navbar__toolbar-item" onClick={() => { toggleTheme(); setToolbarOpen(false); }}>
+                  <i className={theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun'} />
+                  <span>{theme === 'light' ? '다크 모드' : '라이트 모드'}</span>
+                </button>
+                <Link to="/mentors" className="navbar__toolbar-item" onClick={() => setToolbarOpen(false)}>
+                  <i className="fa-solid fa-magnifying-glass" />
+                  <span>멘토 검색</span>
+                </Link>
+                <Link to="/guides" className="navbar__toolbar-item" onClick={() => setToolbarOpen(false)}>
+                  <i className="fa-solid fa-book-open" />
+                  <span>학습가이드</span>
+                </Link>
+              </div>
+            )}
+          </div>
 
           {user ? (
             <div style={{ position: 'relative' }}>
