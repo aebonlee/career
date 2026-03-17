@@ -105,7 +105,7 @@ export default function MentorDetailPage() {
                       padding: '8px 0', borderBottom: '1px solid var(--border-light)',
                       fontSize: '0.875rem',
                     }}>
-                      <span>{s.icon} {s.name}</span>
+                      <span><i className={s.icon} /> {s.name}</span>
                       <span style={{ color: 'var(--text-light)' }}>{s.durations.join('/')}분</span>
                     </div>
                   ))}

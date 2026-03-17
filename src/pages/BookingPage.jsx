@@ -105,7 +105,7 @@ export default function BookingPage() {
                     }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                        <span style={{ fontSize: 28 }}>{svc.icon}</span>
+                        <i className={svc.icon} style={{ fontSize: 28 }} />
                         <div>
                           <h4 style={{ fontWeight: 700 }}>{svc.name}</h4>
                           <p style={{ fontSize: '0.8125rem', color: 'var(--text-light)' }}>{svc.description}</p>

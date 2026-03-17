@@ -16,7 +16,7 @@ export default function GuideCategoryPage() {
             <span className="guide-breadcrumb__sep">›</span>
             <span>{category.title}</span>
           </nav>
-          <h1>{category.icon} {category.title}</h1>
+          <h1><i className={category.icon} /> {category.title}</h1>
           <p>{category.description}</p>
         </div>
       </div>
