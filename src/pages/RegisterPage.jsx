@@ -48,8 +48,8 @@ export default function RegisterPage() {
             <label className="form-label">가입 유형</label>
             <div className="role-selector">
               {[
-                { value: 'mentee', icon: '👤', label: '멘티 (상담받기)' },
-                { value: 'mentor', icon: '🎓', label: '멘토 (상담하기)' },
+                { value: 'mentee', icon: 'fa-solid fa-user', label: '멘티 (상담받기)' },
+                { value: 'mentor', icon: 'fa-solid fa-graduation-cap', label: '멘토 (상담하기)' },
               ].map(opt => (
                 <button
                   key={opt.value}
@@ -57,7 +57,7 @@ export default function RegisterPage() {
                   className={cn('role-option', form.role === opt.value && 'role-option--selected')}
                   onClick={() => setForm(p => ({ ...p, role: opt.value }))}
                 >
-                  <div className="role-option__icon">{opt.icon}</div>
+                  <div className="role-option__icon"><i className={opt.icon} /></div>
                   <div className="role-option__label">{opt.label}</div>
                 </button>
               ))}

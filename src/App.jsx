@@ -26,6 +26,8 @@ const ReviewsPage = lazy(() => import('./pages/ReviewsPage'));
 const GuidesPage = lazy(() => import('./pages/GuidesPage'));
 const GuideCategoryPage = lazy(() => import('./pages/GuideCategoryPage'));
 const GuideDetailPage = lazy(() => import('./pages/GuideDetailPage'));
+const CoursesPage = lazy(() => import('./pages/CoursesPage'));
+const MentoringPage = lazy(() => import('./pages/MentoringPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 function PageLoader() {
@@ -50,6 +52,8 @@ export default function App() {
                 <Route path="services" element={<ServicesPage />} />
                 <Route path="mentors" element={<MentorListPage />} />
                 <Route path="mentors/:id" element={<MentorDetailPage />} />
+                <Route path="courses" element={<CoursesPage />} />
+                <Route path="mentoring" element={<MentoringPage />} />
                 <Route path="guides" element={<GuidesPage />} />
                 <Route path="guides/:categorySlug" element={<GuideCategoryPage />} />
                 <Route path="guides/:categorySlug/:topicSlug" element={<GuideDetailPage />} />

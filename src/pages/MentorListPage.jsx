@@ -53,7 +53,7 @@ export default function MentorListPage() {
           <div className="mentor-list__controls">
             <div className="mentor-list__search">
               <Input placeholder="멘토 이름 또는 전문분야 검색" value={search}
-                onChange={e => { setSearch(e.target.value); setPage(1); }} icon="🔍" />
+                onChange={e => { setSearch(e.target.value); setPage(1); }} icon={<i className="fa-solid fa-magnifying-glass" />} />
             </div>
             <select className="form-select" value={specialty} onChange={e => { setSpecialty(e.target.value); setPage(1); }}
               style={{ width: 'auto' }}>

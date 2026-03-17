@@ -18,7 +18,7 @@ export default function ServiceCards() {
               className="service-card"
               style={{ animationDelay: `${i * 0.1}s` }}
             >
-              <div className="service-card__icon">{service.icon}</div>
+              <div className="service-card__icon"><i className={service.icon} /></div>
               <h3 className="service-card__title">{service.name}</h3>
               <p className="service-card__desc">{service.description}</p>
               <div className="service-card__meta">

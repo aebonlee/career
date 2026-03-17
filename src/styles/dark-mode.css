@@ -38,7 +38,8 @@
   background: rgba(17, 24, 39, 0.95);
 }
 
-[data-theme="dark"] .navbar__dropdown {
+[data-theme="dark"] .navbar__dropdown,
+[data-theme="dark"] .navbar__nav-dropdown {
   background: rgba(31, 41, 55, 0.95);
   border-color: var(--border-medium);
 }

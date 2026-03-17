@@ -3,7 +3,7 @@ export const guideCategories = [
   {
     slug: 'resume',
     title: '이력서 작성법',
-    icon: '📄',
+    icon: 'fa-solid fa-file-lines',
     description: '합격하는 이력서의 핵심 원칙부터 ATS 최적화까지, 체계적인 이력서 작성 가이드',
     topics: [
       {
@@ -105,7 +105,7 @@ export const guideCategories = [
   {
     slug: 'cover-letter',
     title: '자기소개서 작성법',
-    icon: '✍️',
+    icon: 'fa-solid fa-pen-fancy',
     description: '설득력 있는 자기소개서의 구조, 지원동기부터 경험 스토리텔링까지',
     topics: [
       {
@@ -201,7 +201,7 @@ export const guideCategories = [
   {
     slug: 'genai',
     title: 'GenAI 활용법',
-    icon: '🤖',
+    icon: 'fa-solid fa-robot',
     description: '생성형 AI를 취업 준비에 활용하는 실전 가이드와 주의사항',
     topics: [
       {
@@ -294,7 +294,7 @@ export const guideCategories = [
   {
     slug: 'interview-major',
     title: '전공별 면접방법',
-    icon: '🎓',
+    icon: 'fa-solid fa-graduation-cap',
     description: '공학, 경영, 인문, IT, 교육 등 전공 특성에 맞는 면접 준비 전략',
     topics: [
       {
@@ -382,7 +382,7 @@ export const guideCategories = [
   {
     slug: 'interview-company',
     title: '기업유형별 면접 대비',
-    icon: '🏢',
+    icon: 'fa-solid fa-building',
     description: '공기업, 대기업, 중소기업, 스타트업 등 기업 유형에 따른 면접 전략',
     topics: [
       {
@@ -471,7 +471,7 @@ export const guideCategories = [
   {
     slug: 'job-search',
     title: '취업 전략',
-    icon: '🎯',
+    icon: 'fa-solid fa-bullseye',
     description: '채용 플랫폼 활용, 네트워킹, 포트폴리오, 연봉 협상까지 실전 취업 전략',
     topics: [
       {

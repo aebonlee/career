@@ -24,14 +24,14 @@ function renderSection(section, idx) {
     case 'tip':
       return (
         <div key={idx} className="guide-detail__callout guide-detail__callout--tip">
-          <span className="guide-detail__callout-icon">💡</span>
+          <span className="guide-detail__callout-icon"><i className="fa-solid fa-lightbulb" /></span>
           <p>{section.content}</p>
         </div>
       );
     case 'warning':
       return (
         <div key={idx} className="guide-detail__callout guide-detail__callout--warning">
-          <span className="guide-detail__callout-icon">⚠️</span>
+          <span className="guide-detail__callout-icon"><i className="fa-solid fa-triangle-exclamation" /></span>
           <p>{section.content}</p>
         </div>
       );
@@ -39,11 +39,11 @@ function renderSection(section, idx) {
       return (
         <div key={idx} className="guide-detail__example">
           <div className="guide-detail__example-item guide-detail__example-item--good">
-            <span className="guide-detail__example-label">✅ 좋은 예</span>
+            <span className="guide-detail__example-label"><i className="fa-solid fa-circle-check" /> 좋은 예</span>
             <p>{section.good}</p>
           </div>
           <div className="guide-detail__example-item guide-detail__example-item--bad">
-            <span className="guide-detail__example-label">❌ 나쁜 예</span>
+            <span className="guide-detail__example-label"><i className="fa-solid fa-circle-xmark" /> 나쁜 예</span>
             <p>{section.bad}</p>
           </div>
         </div>
@@ -90,7 +90,7 @@ export default function GuideDetailPage() {
           <div className="guide-detail-layout">
             {/* Sidebar */}
             <aside className="guide-sidebar">
-              <h4 className="guide-sidebar__title">{category.icon} {category.title}</h4>
+              <h4 className="guide-sidebar__title"><i className={category.icon} /> {category.title}</h4>
               <nav className="guide-sidebar__nav">
                 {currentCategory.topics.map((t) => (
                   <Link

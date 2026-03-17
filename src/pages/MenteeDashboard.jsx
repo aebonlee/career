@@ -81,7 +81,7 @@ export default function MenteeDashboard() {
                   <Card key={d.id} padding="md">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                        <span style={{ fontSize: 24 }}>{d.type === 'resume' ? '\uD83D\uDCC4' : '\u270D\uFE0F'}</span>
+                        <i className={d.type === 'resume' ? 'fa-solid fa-file-lines' : 'fa-solid fa-pen-fancy'} style={{ fontSize: 24 }} />
                         <div>
                           <h4 style={{ fontWeight: 600, fontSize: '0.9375rem' }}>{d.name}</h4>
                           <p style={{ fontSize: '0.8125rem', color: 'var(--text-light)' }}>{d.date}</p>
@@ -126,7 +126,7 @@ export default function MenteeDashboard() {
             )}
 
             {activeTab === 'messages' && (
-              <EmptyState icon="\uD83D\uDCAC" title="아직 메시지가 없습니다"
+              <EmptyState icon={<i className="fa-solid fa-comment" />} title="아직 메시지가 없습니다"
                 description="멘토와 상담을 예약하면 메시지를 주고받을 수 있습니다." />
             )}
           </div>

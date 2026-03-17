@@ -11,7 +11,7 @@ export default function StarRating({ rating = 0, maxStars = 5, size = 'md', inte
           role={interactive ? 'button' : undefined}
           aria-label={interactive ? `${i + 1}점` : undefined}
         >
-          {i < Math.round(rating) ? '\u2605' : '\u2606'}
+          <i className={i < Math.round(rating) ? 'fa-solid fa-star' : 'fa-regular fa-star'} />
         </span>
       ))}
     </span>

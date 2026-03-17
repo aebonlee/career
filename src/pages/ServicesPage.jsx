@@ -27,10 +27,10 @@ export default function ServicesPage() {
 
       <section className="section">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 32 }}>
+          <div className="services-page__grid">
             {SERVICES.map(service => (
               <Card key={service.id} padding="lg" hoverable>
-                <div className="service-detail-card__icon">{service.icon}</div>
+                <div className="service-detail-card__icon"><i className={service.icon} /></div>
                 <h3 style={{ fontSize: '1.375rem', fontWeight: 700, marginBottom: 12 }}>{service.name}</h3>
                 <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: 20 }}>
                   {service.description}

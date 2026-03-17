@@ -1,7 +1,7 @@
 const values = [
-  { icon: '\uD83C\uDF93', title: '전문성', desc: '직업학박사 학위를 보유한 전문가들이 체계적인 커리어 상담을 제공합니다.' },
-  { icon: '\uD83C\uDFAF', title: '맞춤형', desc: '개인의 적성, 경험, 목표에 맞는 1:1 맞춤 상담을 진행합니다.' },
-  { icon: '\uD83E\uDD1D', title: '신뢰', desc: '검증된 멘토와 투명한 프로세스로 신뢰할 수 있는 서비스를 제공합니다.' },
+  { icon: 'fa-solid fa-graduation-cap', title: '전문성', desc: '직업학박사 학위를 보유한 전문가들이 체계적인 커리어 상담을 제공합니다.' },
+  { icon: 'fa-solid fa-bullseye', title: '맞춤형', desc: '개인의 적성, 경험, 목표에 맞는 1:1 맞춤 상담을 진행합니다.' },
+  { icon: 'fa-solid fa-handshake', title: '신뢰', desc: '검증된 멘토와 투명한 프로세스로 신뢰할 수 있는 서비스를 제공합니다.' },
 ];
 
 const steps = [
@@ -22,9 +22,9 @@ export default function AboutPage() {
       </div>
 
       <section className="section">
-        <div className="container" style={{ maxWidth: 800, textAlign: 'center' }}>
-          <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: 24 }}>우리의 미션</h2>
-          <p style={{ fontSize: '1.0625rem', color: 'var(--text-secondary)', lineHeight: 1.8 }}>
+        <div className="container about-page__mission">
+          <h2 className="about-page__mission-title">우리의 미션</h2>
+          <p className="about-page__mission-desc">
             상담공간은 직업학 분야의 전문가들과 진로에 고민을 가진 대학생, 구직자를 연결합니다.
             체계적인 커리어 상담을 통해 모든 사람이 자신에게 맞는 직업을 찾고,
             성공적인 커리어를 설계할 수 있도록 돕는 것이 우리의 미션입니다.
@@ -40,7 +40,7 @@ export default function AboutPage() {
           <div className="about-page__values">
             {values.map(v => (
               <div key={v.title} className="value-card">
-                <div className="value-card__icon">{v.icon}</div>
+                <div className="value-card__icon"><i className={v.icon} /></div>
                 <h3 className="value-card__title">{v.title}</h3>
                 <p className="value-card__desc">{v.desc}</p>
               </div>

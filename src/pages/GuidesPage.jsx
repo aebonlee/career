@@ -18,7 +18,7 @@ export default function GuidesPage() {
           <div className="guides-grid">
             {categories.map((cat) => (
               <Link key={cat.slug} to={`/guides/${cat.slug}`} className="guide-category-card">
-                <div className="guide-category-card__icon">{cat.icon}</div>
+                <div className="guide-category-card__icon"><i className={cat.icon} /></div>
                 <h2 className="guide-category-card__title">{cat.title}</h2>
                 <p className="guide-category-card__desc">{cat.description}</p>
                 <span className="guide-category-card__count">{cat.topicCount}개 가이드</span>

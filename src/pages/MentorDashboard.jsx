@@ -79,7 +79,7 @@ export default function MentorDashboard() {
                   <Card key={d.id} padding="md">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                        <span style={{ fontSize: 24 }}>{d.type === 'resume' ? '\uD83D\uDCC4' : '\u270D\uFE0F'}</span>
+                        <i className={d.type === 'resume' ? 'fa-solid fa-file-lines' : 'fa-solid fa-pen-fancy'} style={{ fontSize: 24 }} />
                         <div>
                           <h4 style={{ fontWeight: 600, fontSize: '0.9375rem' }}>{d.name}</h4>
                           <p style={{ fontSize: '0.8125rem', color: 'var(--text-light)' }}>제출자: {d.submitter} &middot; {d.date}</p>

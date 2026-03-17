@@ -10,7 +10,7 @@ export default function BookingConfirmPage() {
     <div className="confirm-page">
       <div className="confirm-card">
         <div className={`confirm-card__icon ${isSuccess ? 'confirm-card__icon--success' : 'confirm-card__icon--error'}`}>
-          {isSuccess ? '\u2713' : '\u2717'}
+          <i className={isSuccess ? 'fa-solid fa-check' : 'fa-solid fa-xmark'} />
         </div>
         <h2 className="confirm-card__title">
           {isSuccess ? '예약이 확정되었습니다' : '결제에 실패했습니다'}

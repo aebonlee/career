@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { useTheme } from '../../contexts/ThemeContext';
@@ -13,6 +13,9 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [navDropdown, setNavDropdown] = useState(null);
+  const navDropdownRef = useRef(null);
+  const [mobileExpanded, setMobileExpanded] = useState(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -20,10 +23,111 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    const onClickOutside = (e) => {
+      if (navDropdownRef.current && !navDropdownRef.current.contains(e.target)) {
+        setNavDropdown(null);
+      }
+    };
+    document.addEventListener('mousedown', onClickOutside);
+    return () => document.removeEventListener('mousedown', onClickOutside);
+  }, []);
+
   const handleSignOut = async () => {
     await signOut();
     setDropdownOpen(false);
     navigate('/');
+  };
+
+  const renderDesktopLink = (link, idx) => {
+    if (link.type === 'divider') {
+      return <span key={`div-${idx}`} className="navbar__divider" />;
+    }
+
+    if (link.children) {
+      return (
+        <div key={link.label} className="navbar__dropdown-wrap" ref={navDropdownRef}>
+          <button
+            className={cn('navbar__link navbar__link--has-children', navDropdown === link.label && 'navbar__link--active')}
+            onClick={() => setNavDropdown(navDropdown === link.label ? null : link.label)}
+          >
+            {link.label} <i className="fa-solid fa-chevron-down navbar__link-arrow" />
+          </button>
+          {navDropdown === link.label && (
+            <div className="navbar__nav-dropdown">
+              {link.children.map(child => (
+                <NavLink
+                  key={child.path}
+                  to={child.path}
+                  className="navbar__nav-dropdown-item"
+                  onClick={() => setNavDropdown(null)}
+                >
+                  <i className={child.icon} />
+                  <span>{child.label}</span>
+                </NavLink>
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    return (
+      <NavLink
+        key={link.path}
+        to={link.path}
+        className={({ isActive }) => cn('navbar__link', isActive && 'navbar__link--active')}
+      >
+        {link.label}
+      </NavLink>
+    );
+  };
+
+  const renderMobileLink = (link, idx) => {
+    if (link.type === 'divider') {
+      return <div key={`div-${idx}`} className="navbar__mobile-divider" />;
+    }
+
+    if (link.children) {
+      const isExpanded = mobileExpanded === link.label;
+      return (
+        <div key={link.label} className="navbar__mobile-group">
+          <button
+            className={cn('navbar__mobile-link navbar__mobile-link--parent', isExpanded && 'navbar__mobile-link--expanded')}
+            onClick={() => setMobileExpanded(isExpanded ? null : link.label)}
+          >
+            {link.label}
+            <i className={cn('fa-solid fa-chevron-down navbar__mobile-arrow', isExpanded && 'navbar__mobile-arrow--open')} />
+          </button>
+          {isExpanded && (
+            <div className="navbar__mobile-children">
+              {link.children.map(child => (
+                <NavLink
+                  key={child.path}
+                  to={child.path}
+                  className={({ isActive }) => cn('navbar__mobile-child', isActive && 'navbar__mobile-child--active')}
+                  onClick={() => { setMobileOpen(false); setMobileExpanded(null); }}
+                >
+                  <i className={child.icon} />
+                  <span>{child.label}</span>
+                </NavLink>
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    return (
+      <NavLink
+        key={link.path}
+        to={link.path}
+        className={({ isActive }) => cn('navbar__mobile-link', isActive && 'navbar__mobile-link--active')}
+        onClick={() => setMobileOpen(false)}
+      >
+        {link.label}
+      </NavLink>
+    );
   };
 
   return (
@@ -37,21 +141,13 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="navbar__links">
-          {NAV_LINKS.map(link => (
-            <NavLink
-              key={link.path}
-              to={link.path}
-              className={({ isActive }) => cn('navbar__link', isActive && 'navbar__link--active')}
-            >
-              {link.label}
-            </NavLink>
-          ))}
+          {NAV_LINKS.map((link, idx) => renderDesktopLink(link, idx))}
         </div>
 
         {/* Right actions */}
         <div className="navbar__actions">
           <button className="navbar__theme-btn" onClick={toggleTheme}>
-            {theme === 'light' ? '\uD83C\uDF19' : '\u2600\uFE0F'}
+            <i className={theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun'} />
           </button>
 
           {user ? (
@@ -65,18 +161,18 @@ export default function Navbar() {
                   <div className="navbar__dropdown-overlay" onClick={() => setDropdownOpen(false)} />
                   <div className="navbar__dropdown">
                     <Link to="/profile" className="navbar__dropdown-item" onClick={() => setDropdownOpen(false)}>
-                      👤 프로필
+                      <i className="fa-solid fa-user" /> 프로필
                     </Link>
                     <Link
                       to={isMentor ? '/mentor-dashboard' : '/dashboard'}
                       className="navbar__dropdown-item"
                       onClick={() => setDropdownOpen(false)}
                     >
-                      📊 대시보드
+                      <i className="fa-solid fa-chart-bar" /> 대시보드
                     </Link>
                     <div className="navbar__dropdown-divider" />
                     <button className="navbar__dropdown-item navbar__dropdown-item--danger" onClick={handleSignOut}>
-                      🚪 로그아웃
+                      <i className="fa-solid fa-right-from-bracket" /> 로그아웃
                     </button>
                   </div>
                 </>
@@ -104,16 +200,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div className={cn('navbar__mobile-menu', mobileOpen && 'navbar__mobile-menu--open')}>
         <div className="container navbar__mobile-links">
-          {NAV_LINKS.map(link => (
-            <NavLink
-              key={link.path}
-              to={link.path}
-              className={({ isActive }) => cn('navbar__mobile-link', isActive && 'navbar__mobile-link--active')}
-              onClick={() => setMobileOpen(false)}
-            >
-              {link.label}
-            </NavLink>
-          ))}
+          {NAV_LINKS.map((link, idx) => renderMobileLink(link, idx))}
           {!user && (
             <div className="navbar__mobile-auth">
               <Link to="/login" className="navbar__auth-btn navbar__auth-btn--login" onClick={() => setMobileOpen(false)}>

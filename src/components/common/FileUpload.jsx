@@ -27,7 +27,7 @@ export default function FileUpload({ onFileSelect, accept = '.pdf,.doc,.docx', m
         onDragLeave={() => setDragActive(false)}
         onDrop={e => { e.preventDefault(); setDragActive(false); handleFile(e.dataTransfer.files[0]); }}
       >
-        <div className="file-upload__icon">📎</div>
+        <div className="file-upload__icon"><i className="fa-solid fa-paperclip" /></div>
         <p className="file-upload__text">{label}</p>
         <p className="file-upload__hint">
           드래그하거나 클릭하여 파일을 선택하세요 (최대 {maxSize}MB)
