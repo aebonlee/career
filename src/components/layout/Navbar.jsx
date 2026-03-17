@@ -6,9 +6,18 @@ import Avatar from '../common/Avatar';
 import { NAV_LINKS, SITE_NAME } from '../../constants';
 import { cn } from '../../utils';
 
+const ACCENT_COLORS = [
+  { key: 'blue', color: '#2563EB' },
+  { key: 'indigo', color: '#4F46E5' },
+  { key: 'violet', color: '#7C3AED' },
+  { key: 'emerald', color: '#059669' },
+  { key: 'rose', color: '#E11D48' },
+  { key: 'amber', color: '#D97706' },
+];
+
 export default function Navbar() {
   const { user, profile, signOut, isMentor } = useAuth();
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, accentColor, setAccentColor } = useTheme();
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -18,6 +27,7 @@ export default function Navbar() {
   const [mobileExpanded, setMobileExpanded] = useState(null);
   const [toolbarOpen, setToolbarOpen] = useState(false);
   const toolbarRef = useRef(null);
+  const [lang, setLang] = useState('KO');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -162,18 +172,33 @@ export default function Navbar() {
             </button>
             {toolbarOpen && (
               <div className="navbar__toolbar">
+                <Link to="/mentors" className="navbar__toolbar-item" onClick={() => setToolbarOpen(false)}>
+                  <i className="fa-solid fa-magnifying-glass" />
+                  <span>검색</span>
+                </Link>
+                <button className="navbar__toolbar-item" onClick={() => setLang(l => l === 'KO' ? 'EN' : 'KO')}>
+                  <i className="fa-solid fa-globe" />
+                  <span>{lang === 'KO' ? 'EN' : 'KO'}</span>
+                </button>
+                <div className="navbar__toolbar-item navbar__toolbar-item--palette">
+                  <i className="fa-solid fa-palette" />
+                  <span>컬러팔레트</span>
+                  <div className="navbar__color-swatches">
+                    {ACCENT_COLORS.map(({ key, color }) => (
+                      <button
+                        key={key}
+                        className={cn('navbar__color-swatch', accentColor === key && 'navbar__color-swatch--active')}
+                        style={{ background: color }}
+                        onClick={() => setAccentColor(key)}
+                        aria-label={key}
+                      />
+                    ))}
+                  </div>
+                </div>
                 <button className="navbar__toolbar-item" onClick={() => { toggleTheme(); setToolbarOpen(false); }}>
                   <i className={theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun'} />
                   <span>{theme === 'light' ? '다크 모드' : '라이트 모드'}</span>
                 </button>
-                <Link to="/mentors" className="navbar__toolbar-item" onClick={() => setToolbarOpen(false)}>
-                  <i className="fa-solid fa-magnifying-glass" />
-                  <span>멘토 검색</span>
-                </Link>
-                <Link to="/guides" className="navbar__toolbar-item" onClick={() => setToolbarOpen(false)}>
-                  <i className="fa-solid fa-book-open" />
-                  <span>학습가이드</span>
-                </Link>
               </div>
             )}
           </div>

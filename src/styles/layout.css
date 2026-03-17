@@ -297,6 +297,54 @@
   opacity: 1;
 }
 
+/* Palette toolbar item */
+.navbar__toolbar-item--palette {
+  flex-wrap: wrap;
+  cursor: default;
+}
+
+.navbar__toolbar-item--palette:hover {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.navbar__color-swatches {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.navbar__color-swatch {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.navbar__color-swatch:hover {
+  transform: scale(1.15);
+}
+
+.navbar__color-swatch--active {
+  box-shadow: 0 0 0 2px var(--bg-white), 0 0 0 4px var(--text-secondary);
+}
+
+.navbar__color-swatch--active::after {
+  content: '\2713';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
 /* User dropdown */
 .navbar__user-btn {
   display: flex;
