@@ -1,14 +1,5 @@
 import { cn, getInitials } from '../../utils';
 
-const colors = ['#2563EB', '#059669', '#D97706', '#DC2626', '#7C3AED', '#DB2777'];
-
-function getColor(name) {
-  if (!name) return colors[0];
-  let hash = 0;
-  for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
-  return colors[Math.abs(hash) % colors.length];
-}
-
 export default function Avatar({ src, name, size = 'md', className }) {
   if (src) {
     return (
@@ -19,10 +10,7 @@ export default function Avatar({ src, name, size = 'md', className }) {
   }
 
   return (
-    <div
-      className={cn('avatar', `avatar--${size}`, className)}
-      style={{ background: getColor(name), color: '#fff' }}
-    >
+    <div className={cn('avatar', `avatar--${size}`, 'avatar--initials', className)}>
       {getInitials(name)}
     </div>
   );
