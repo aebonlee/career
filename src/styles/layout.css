@@ -56,13 +56,14 @@
 }
 
 .navbar__link {
-  padding: 10px 16px;
+  padding: 8px 10px;
   font-weight: 500;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
   color: var(--text-primary);
   transition: color 0.2s;
   text-decoration: none;
   border-radius: var(--radius-sm);
+  white-space: nowrap;
 }
 
 .navbar__link:hover {
@@ -291,7 +292,7 @@
   text-align: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .navbar__links,
   .navbar__auth {
     display: none;

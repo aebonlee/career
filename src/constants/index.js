@@ -89,10 +89,14 @@ export const SPECIALTIES = [
 ];
 
 export const NAV_LINKS = [
-  { label: '홈', path: '/' },
+  { label: '이력서', path: '/guides/resume' },
+  { label: '자기소개서', path: '/guides/cover-letter' },
+  { label: 'GenAI 활용', path: '/guides/genai' },
+  { label: '전공별 면접', path: '/guides/interview-major' },
+  { label: '기업별 면접', path: '/guides/interview-company' },
+  { label: '취업전략', path: '/guides/job-search' },
   { label: '서비스', path: '/services' },
   { label: '멘토', path: '/mentors' },
-  { label: '학습가이드', path: '/guides' },
   { label: '소개', path: '/about' },
 ];
 

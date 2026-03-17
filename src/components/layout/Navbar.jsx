@@ -41,7 +41,6 @@ export default function Navbar() {
             <NavLink
               key={link.path}
               to={link.path}
-              end={link.path === '/'}
               className={({ isActive }) => cn('navbar__link', isActive && 'navbar__link--active')}
             >
               {link.label}
@@ -109,7 +108,6 @@ export default function Navbar() {
             <NavLink
               key={link.path}
               to={link.path}
-              end={link.path === '/'}
               className={({ isActive }) => cn('navbar__mobile-link', isActive && 'navbar__mobile-link--active')}
               onClick={() => setMobileOpen(false)}
             >
