@@ -1404,7 +1404,7 @@
 
 /* Compact page header for detail */
 .page-header--compact {
-  padding: 24px 0 8px;
+  padding: calc(var(--nav-height) + 24px) 0 8px;
 }
 
 /* Responsive */
