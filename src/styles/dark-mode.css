@@ -1,0 +1,108 @@
+/* ============================================
+   Dark Mode
+   ============================================ */
+
+[data-theme="dark"] {
+  --bg-white: #111827;
+  --bg-light: #1F2937;
+  --bg-medium: #374151;
+  --bg-dark: #0D1117;
+  --text-primary: #F9FAFB;
+  --text-secondary: #D1D5DB;
+  --text-light: #9CA3AF;
+  --text-muted: #6B7280;
+  --border-light: #374151;
+  --border-medium: #4B5563;
+  --glass-bg: rgba(17, 24, 39, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --primary: #4A8FE7;
+  --primary-dark: #2B6CC4;
+  --primary-light: #93C5FD;
+  --primary-bg: rgba(74, 143, 231, 0.1);
+  --primary-gradient: linear-gradient(135deg, #1A5AC8 0%, #4A8FE7 100%);
+  --hero-gradient: linear-gradient(135deg, #0A2D6E 0%, #122870 50%, #172D58 100%);
+  --card-gradient: linear-gradient(145deg, rgba(74, 143, 231, 0.05) 0%, rgba(74, 143, 231, 0.12) 100%);
+  --footer-gradient: linear-gradient(180deg, #0F172A 0%, #030712 100%);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.5);
+  --success-light: rgba(5, 150, 105, 0.15);
+  --warning-light: rgba(217, 119, 6, 0.15);
+  --error-light: rgba(220, 38, 38, 0.15);
+  --info-light: rgba(37, 99, 235, 0.15);
+}
+
+/* Navbar */
+[data-theme="dark"] .navbar--scrolled {
+  background: rgba(17, 24, 39, 0.95);
+}
+
+[data-theme="dark"] .navbar__dropdown {
+  background: rgba(31, 41, 55, 0.95);
+  border-color: var(--border-medium);
+}
+
+/* Cards */
+[data-theme="dark"] .auth-card {
+  background: var(--bg-light);
+  border-color: var(--border-medium);
+}
+
+[data-theme="dark"] .auth-social-btn {
+  background: var(--bg-medium);
+  border-color: var(--border-medium);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .role-option {
+  background: var(--bg-medium);
+  border-color: var(--border-medium);
+}
+
+/* Hero particles */
+[data-theme="dark"] .hero__particle {
+  background: rgba(74, 143, 231, 0.25);
+}
+
+/* Form inputs */
+[data-theme="dark"] .form-input,
+[data-theme="dark"] .form-textarea,
+[data-theme="dark"] .form-select {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border-medium);
+}
+
+[data-theme="dark"] .form-input::placeholder,
+[data-theme="dark"] .form-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* File Upload */
+[data-theme="dark"] .file-upload {
+  background: var(--bg-medium);
+  border-color: var(--border-medium);
+}
+
+/* Time slots */
+[data-theme="dark"] .time-slot {
+  background: var(--bg-medium);
+  border-color: var(--border-medium);
+}
+
+[data-theme="dark"] .calendar__day:hover:not(:disabled):not(.calendar__day--selected) {
+  background: var(--bg-medium);
+}
+
+/* Scrollbar */
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: var(--bg-light);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+}
+
+[data-theme="dark"] ::selection {
+  background: var(--primary-dark);
+}

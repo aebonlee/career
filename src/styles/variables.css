@@ -1,0 +1,88 @@
+/* ============================================
+   상담공간 (Counseling Space) - CSS Variables
+   Design System based on DreamIT
+   ============================================ */
+
+:root {
+  /* Primary Colors */
+  --primary: #0046C8;
+  --primary-dark: #002E8A;
+  --primary-light: #4A8FE7;
+  --primary-bg: rgba(0, 70, 200, 0.06);
+
+  /* Backgrounds */
+  --bg-white: #FFFFFF;
+  --bg-light: #F5F7FA;
+  --bg-medium: #E8EDF2;
+  --bg-dark: #1A1F36;
+
+  /* Text */
+  --text-primary: #111827;
+  --text-secondary: #4B5563;
+  --text-light: #6B7280;
+  --text-white: #FFFFFF;
+  --text-muted: #9CA3AF;
+
+  /* Borders */
+  --border-light: #E5E7EB;
+  --border-medium: #CBD5E0;
+  --border-focus: var(--primary);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.06);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-blur: 12px;
+
+  /* Gradients */
+  --primary-gradient: linear-gradient(135deg, #0046C8 0%, #4A8FE7 100%);
+  --accent-gradient: linear-gradient(135deg, #002E8A 0%, #0046C8 50%, #4A8FE7 100%);
+  --hero-gradient: linear-gradient(135deg, #0046C8 0%, #002E8A 50%, #1E3A5F 100%);
+  --hero-gradient-dark: linear-gradient(135deg, #0A2D6E 0%, #122870 50%, #172D58 100%);
+  --footer-gradient: linear-gradient(180deg, #1A1F36 0%, #0D1117 100%);
+  --card-gradient: linear-gradient(145deg, rgba(0, 70, 200, 0.03) 0%, rgba(74, 143, 231, 0.08) 100%);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --nav-height: 72px;
+  --section-padding: 80px;
+  --container-max: 1200px;
+
+  /* Transitions */
+  --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.15s ease;
+  --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Status Colors */
+  --success: #059669;
+  --success-light: #D1FAE5;
+  --warning: #D97706;
+  --warning-light: #FEF3C7;
+  --error: #DC2626;
+  --error-light: #FEE2E2;
+  --info: #2563EB;
+  --info-light: #DBEAFE;
+
+  /* Star Rating */
+  --star-filled: #F59E0B;
+  --star-empty: #D1D5DB;
+
+  /* Z-index layers */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-navbar: 1000;
+  --z-modal-backdrop: 1100;
+  --z-modal: 1200;
+  --z-toast: 1300;
+}

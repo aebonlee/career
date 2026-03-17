@@ -1,0 +1,65 @@
+/* ============================================
+   Responsive Breakpoints
+   Mobile: 0-480px
+   Tablet: 481-768px
+   Desktop: 769-1024px
+   Wide: 1025px+
+   ============================================ */
+
+/* Tablet and below */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 48px;
+    --nav-height: 64px;
+  }
+
+  .container { padding: 0 16px; }
+
+  .section-title { font-size: 1.75rem; }
+  .section-subtitle { font-size: 1rem; }
+  .section-header { margin-bottom: 40px; }
+
+  .text-display { font-size: 2.25rem; }
+  .text-h1 { font-size: 1.75rem; }
+  .text-h2 { font-size: 1.5rem; }
+
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .page-header {
+    padding: calc(var(--nav-height) + 32px) 0 32px;
+  }
+
+  .page-header h1 { font-size: 1.5rem; }
+
+  .hide-mobile { display: none !important; }
+}
+
+/* Small tablet */
+@media (min-width: 481px) and (max-width: 768px) {
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Desktop */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container { padding: 0 32px; }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .hide-tablet { display: none !important; }
+}
+
+/* Wide */
+@media (min-width: 1025px) {
+  .hide-desktop { display: none !important; }
+}
+
+/* Mobile only */
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+
+  .text-display { font-size: 1.875rem; }
+  .text-h1 { font-size: 1.5rem; }
+
+  .section { padding: 40px 0; }
+}
