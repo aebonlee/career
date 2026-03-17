@@ -41,8 +41,8 @@ Deno.serve(async (req) => {
 
     // Get expected payment from DB
     const { data: payment, error: payErr } = await supabase
-      .from('payments')
-      .select('*, bookings(*)')
+      .from('career_payments')
+      .select('*, career_bookings(*)')
       .eq('merchant_uid', merchant_uid)
       .single();
 
@@ -58,15 +58,15 @@ Deno.serve(async (req) => {
 
     if (iamportPayment.amount === payment.amount && iamportPayment.status === 'paid') {
       // Payment verified - update records
-      await supabase.from('payments').update({
+      await supabase.from('career_payments').update({
         imp_uid, status: 'paid', pg_response: iamportPayment, paid_at: new Date().toISOString(),
       }).eq('id', payment.id);
 
-      await supabase.from('bookings').update({ status: 'confirmed' }).eq('id', payment.booking_id);
+      await supabase.from('career_bookings').update({ status: 'confirmed' }).eq('id', payment.booking_id);
 
       // Notify mentee
-      await supabase.from('notifications').insert({
-        user_id: payment.bookings.mentee_id,
+      await supabase.from('career_notifications').insert({
+        user_id: payment.career_bookings.mentee_id,
         type: 'booking_confirmed',
         title: '예약이 확정되었습니다',
         body: '결제가 완료되어 상담 예약이 확정되었습니다.',
@@ -77,7 +77,7 @@ Deno.serve(async (req) => {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     } else {
-      await supabase.from('payments').update({ imp_uid, status: 'failed', pg_response: iamportPayment }).eq('id', payment.id);
+      await supabase.from('career_payments').update({ imp_uid, status: 'failed', pg_response: iamportPayment }).eq('id', payment.id);
 
       return new Response(JSON.stringify({ success: false, error: 'Amount mismatch or payment not paid' }), {
         status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },

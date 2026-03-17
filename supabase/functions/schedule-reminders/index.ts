@@ -31,17 +31,17 @@ Deno.serve(async (req) => {
 
     for (const [minTime, maxTime, label] of [[h24Min, h24Max, '24시간'], [h1Min, h1Max, '1시간']] as const) {
       const { data: bookings } = await supabase
-        .from('bookings')
-        .select('*, time_slots(start_time), mentors(profile_id), profiles!bookings_mentee_id_fkey(full_name, phone)')
+        .from('career_bookings')
+        .select('*, career_time_slots(start_time), career_mentors(profile_id), career_profiles!career_bookings_mentee_id_fkey(full_name, phone)')
         .eq('status', 'confirmed')
-        .gte('time_slots.start_time', minTime)
-        .lte('time_slots.start_time', maxTime);
+        .gte('career_time_slots.start_time', minTime)
+        .lte('career_time_slots.start_time', maxTime);
 
       if (!bookings) continue;
 
       for (const booking of bookings) {
         // Notify mentee
-        await supabase.from('notifications').insert({
+        await supabase.from('career_notifications').insert({
           user_id: booking.mentee_id,
           type: 'reminder',
           title: `상담 ${label} 전 알림`,
@@ -50,8 +50,8 @@ Deno.serve(async (req) => {
         });
 
         // Notify mentor
-        await supabase.from('notifications').insert({
-          user_id: booking.mentors?.profile_id,
+        await supabase.from('career_notifications').insert({
+          user_id: booking.career_mentors?.profile_id,
           type: 'reminder',
           title: `상담 ${label} 전 알림`,
           body: `예정된 상담이 ${label} 후에 시작됩니다.`,

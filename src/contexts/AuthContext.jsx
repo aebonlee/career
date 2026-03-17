@@ -12,7 +12,7 @@ export function AuthProvider({ children }) {
 
   const fetchProfile = useCallback(async (userId) => {
     const { data, error } = await supabase
-      .from('profiles')
+      .from('career_profiles')
       .select('*')
       .eq('id', userId)
       .single();
@@ -88,7 +88,7 @@ export function AuthProvider({ children }) {
   const updateProfile = async (updates) => {
     if (!user) throw new Error('No authenticated user');
     const { data, error } = await supabase
-      .from('profiles')
+      .from('career_profiles')
       .update(updates)
       .eq('id', user.id)
       .select()

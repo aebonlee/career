@@ -76,7 +76,7 @@ Deno.serve(async (req) => {
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
     );
 
-    await supabase.from('bookings').update({
+    await supabase.from('career_bookings').update({
       zoom_meeting_url: meeting.join_url,
       zoom_meeting_id: String(meeting.id),
     }).eq('id', bookingId);
