@@ -10,71 +10,11 @@
  * 또는 아래 HTML 파일을 브라우저에서 열어 수동으로 PNG를 다운로드할 수 있습니다.
  */
 
-import { writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 
-// HTML-to-PNG 방식의 대안: 직접 브라우저에서 캡처
-const html = `<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap');
-body { width: 1200px; height: 630px; overflow: hidden; }
-.og {
-  width: 1200px; height: 630px;
-  background: linear-gradient(135deg, #0046C8 0%, #002E8A 50%, #1E3A5F 100%);
-  position: relative; padding: 80px 100px;
-  font-family: 'Noto Sans KR', sans-serif; color: white;
-}
-.circle1 { position: absolute; top: -100px; right: -50px; width: 360px; height: 360px; border-radius: 50%; background: rgba(255,255,255,0.03); }
-.circle2 { position: absolute; bottom: -120px; left: -80px; width: 400px; height: 400px; border-radius: 50%; background: rgba(255,255,255,0.02); }
-.logo-row { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
-.logo-icon { width: 64px; height: 64px; border-radius: 14px; background: linear-gradient(135deg, #4A8FE7, #93C5FD); display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 700; }
-.logo-text { font-size: 42px; font-weight: 800; }
-.title { font-size: 48px; font-weight: 800; line-height: 1.3; margin-bottom: 20px; }
-.divider { width: 80px; height: 3px; background: linear-gradient(90deg, #4A8FE7, #93C5FD); border-radius: 2px; margin-bottom: 24px; }
-.desc { font-size: 22px; font-weight: 400; color: rgba(255,255,255,0.7); margin-bottom: 48px; }
-.stats { display: flex; gap: 60px; }
-.stat-value { font-size: 32px; font-weight: 800; }
-.stat-label { font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 2px; }
-.card { position: absolute; right: 80px; top: 160px; width: 220px; height: 280px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 24px; text-align: center; }
-.card-avatar { width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,0.12); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; }
-.card-name { width: 100px; height: 10px; background: rgba(255,255,255,0.15); border-radius: 5px; margin: 0 auto 10px; }
-.card-title { width: 70px; height: 8px; background: rgba(255,255,255,0.08); border-radius: 4px; margin: 0 auto 16px; }
-.card-stars { font-size: 16px; color: #F59E0B; margin-bottom: 20px; }
-.card-btn { background: linear-gradient(135deg, #4A8FE7, #93C5FD); border-radius: 8px; padding: 10px 0; font-size: 13px; font-weight: 600; }
-</style>
-</head>
-<body>
-<div class="og">
-  <div class="circle1"></div>
-  <div class="circle2"></div>
-  <div class="logo-row">
-    <div class="logo-icon">상</div>
-    <div class="logo-text">상담공간</div>
-  </div>
-  <div class="title">직업학박사와 함께하는<br>커리어 상담 플랫폼</div>
-  <div class="divider"></div>
-  <div class="desc">진로상담 · 이력서 진단 · 커리어 컨설팅 · 모의면접</div>
-  <div class="stats">
-    <div><div class="stat-value">50+</div><div class="stat-label">전문 멘토</div></div>
-    <div><div class="stat-value">3,000+</div><div class="stat-label">상담 완료</div></div>
-    <div><div class="stat-value">4.9</div><div class="stat-label">평균 평점</div></div>
-  </div>
-  <div class="card">
-    <div class="card-avatar">👤</div>
-    <div class="card-name"></div>
-    <div class="card-title"></div>
-    <div class="card-stars">★★★★★</div>
-    <div class="card-btn">상담 예약하기</div>
-  </div>
-</div>
-</body>
-</html>`;
-
-writeFileSync('public/og-image.html', html, 'utf-8');
-console.log('✅ og-image.html 생성 완료');
+// og-image.html을 읽어서 public에 복사
+const html = readFileSync('public/og-image.html', 'utf-8');
+console.log('✅ og-image.html 확인 완료');
 console.log('');
 console.log('PNG 생성 방법:');
 console.log('1. 브라우저에서 public/og-image.html 열기');
