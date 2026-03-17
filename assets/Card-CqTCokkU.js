@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-DAs1UGHr.js";import{t}from"./utils-DezcL626.js";var n=e();function r({children:e,className:r,hoverable:i,padding:a=`md`,onClick:o,style:s}){return(0,n.jsx)(`div`,{className:t(`card`,`card--${a}`,i&&`card--hoverable`,r),style:s,onClick:o,children:e})}export{r as t};
