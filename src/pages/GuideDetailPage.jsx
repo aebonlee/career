@@ -75,13 +75,7 @@ export default function GuideDetailPage() {
     <>
       <div className="page-header page-header--compact">
         <div className="container">
-          <nav className="guide-breadcrumb">
-            <Link to="/guides">학습가이드</Link>
-            <span className="guide-breadcrumb__sep">›</span>
-            <Link to={`/guides/${categorySlug}`}>{category.title}</Link>
-            <span className="guide-breadcrumb__sep">›</span>
-            <span>{title}</span>
-          </nav>
+          <h1 className="guide-detail__title">{title}</h1>
         </div>
       </div>
 

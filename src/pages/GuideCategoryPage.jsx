@@ -11,11 +11,6 @@ export default function GuideCategoryPage() {
     <>
       <div className="page-header">
         <div className="container">
-          <nav className="guide-breadcrumb">
-            <Link to="/guides">학습가이드</Link>
-            <span className="guide-breadcrumb__sep">›</span>
-            <span>{category.title}</span>
-          </nav>
           <h1><i className={category.icon} /> {category.title}</h1>
           <p>{category.description}</p>
         </div>
