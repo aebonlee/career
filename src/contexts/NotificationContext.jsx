@@ -14,7 +14,7 @@ export function NotificationProvider({ children }) {
   );
 
   const fetchNotifications = useCallback(async () => {
-    if (!user) { setNotifications([]); return; }
+    if (!user || !supabase) { setNotifications([]); return; }
     const { data } = await supabase
       .from('notifications')
       .select('*')
@@ -25,12 +25,13 @@ export function NotificationProvider({ children }) {
   }, [user]);
 
   const markAsRead = useCallback(async (id) => {
+    if (!supabase) return;
     await supabase.from('notifications').update({ is_read: true }).eq('id', id);
     setNotifications(prev => prev.map(n => n.id === id ? { ...n, is_read: true } : n));
   }, []);
 
   const markAllAsRead = useCallback(async () => {
-    if (!user) return;
+    if (!user || !supabase) return;
     await supabase.from('notifications').update({ is_read: true }).eq('user_id', user.id).eq('is_read', false);
     setNotifications(prev => prev.map(n => ({ ...n, is_read: true })));
   }, [user]);
@@ -38,7 +39,7 @@ export function NotificationProvider({ children }) {
   useEffect(() => { fetchNotifications(); }, [fetchNotifications]);
 
   useEffect(() => {
-    if (!user) return;
+    if (!user || !supabase) return;
     const channel = supabase
       .channel(`notifications:${user.id}`)
       .on('postgres_changes', {

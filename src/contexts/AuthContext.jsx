@@ -34,6 +34,10 @@ export function AuthProvider({ children }) {
   }, [fetchProfile]);
 
   useEffect(() => {
+    if (!supabase) {
+      setLoading(false);
+      return;
+    }
     let mounted = true;
     supabase.auth.getSession().then(({ data: { session: s } }) => {
       if (mounted) {
