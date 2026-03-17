@@ -8,8 +8,8 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="footer__brand-logo">
-              <span className="footer__brand-primary">상담</span>
-              <span className="footer__brand-secondary">공간</span>
+              <span className="footer__brand-primary">Career</span>
+              <span className="footer__brand-secondary">Navigator</span>
             </div>
             <p className="footer__brand-desc">
               직업학박사와 함께하는 커리어 상담 플랫폼. 전문가의 도움으로 더 나은 미래를 설계하세요.
@@ -43,7 +43,7 @@ export default function Footer() {
         </div>
 
         <div className="footer__bottom">
-          &copy; 2025 상담공간. All rights reserved.
+          &copy; 2025 Career Navigator. All rights reserved.
         </div>
       </div>
     </footer>

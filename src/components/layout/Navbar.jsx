@@ -31,8 +31,8 @@ export default function Navbar() {
       <div className="container navbar__inner">
         {/* Logo */}
         <Link to="/" className="navbar__logo">
-          <span className="navbar__logo-primary">상담</span>
-          <span className="navbar__logo-secondary">공간</span>
+          <span className="navbar__logo-primary">Career</span>
+          <span className="navbar__logo-secondary">Navigator</span>
         </Link>
 
         {/* Desktop Nav */}

@@ -1,4 +1,4 @@
-export const SITE_NAME = '상담공간';
+export const SITE_NAME = 'Career Navigator';
 export const SITE_DESCRIPTION = '직업학박사가 함께하는 커리어 상담 플랫폼';
 
 export const ROLES = {
