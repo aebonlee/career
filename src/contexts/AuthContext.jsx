@@ -9,6 +9,9 @@ export function AuthProvider({ children }) {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isMentor, setIsMentor] = useState(false);
+  const [accountBlock, setAccountBlock] = useState(null);
+
+  const clearAccountBlock = () => setAccountBlock(null);
 
   const fetchProfile = useCallback(async (userId) => {
     const { data, error } = await supabase
@@ -19,6 +22,46 @@ export function AuthProvider({ children }) {
     if (!error && data) {
       setProfile(data);
       setIsMentor(data.role === 'mentor');
+
+      // signup_domain / visited_sites 자동 처리 (user_profiles 공유 테이블)
+      const currentDomain = window.location.hostname;
+      const { data: upData } = await supabase
+        .from('user_profiles')
+        .select('signup_domain, visited_sites')
+        .eq('id', userId)
+        .single();
+      if (upData) {
+        const updates = {};
+        if (!upData.signup_domain) updates.signup_domain = currentDomain;
+        const sites = Array.isArray(upData.visited_sites) ? upData.visited_sites : [];
+        if (!sites.includes(currentDomain)) {
+          updates.visited_sites = [...sites, currentDomain];
+        }
+        if (Object.keys(updates).length > 0) {
+          supabase.from('user_profiles').update(updates).eq('id', userId).then(() => {});
+        }
+      }
+
+      // 계정 상태 체크
+      try {
+        const { data: statusData } = await supabase.rpc('check_user_status', {
+          target_user_id: userId,
+          current_domain: currentDomain,
+        });
+        if (statusData && statusData.status && statusData.status !== 'active') {
+          setAccountBlock({
+            status: statusData.status,
+            reason: statusData.reason || '',
+            suspended_until: statusData.suspended_until || null,
+          });
+          await supabase.auth.signOut();
+          setUser(null);
+          setProfile(null);
+          return;
+        }
+      } catch {
+        // check_user_status 함수 미존재 시 무시
+      }
     }
   }, []);
 
@@ -45,8 +88,14 @@ export function AuthProvider({ children }) {
       }
     });
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (_event, s) => {
+      async (event, s) => {
         if (mounted) {
+          if (event === 'SIGNED_IN' && s?.user) {
+            supabase.from('user_profiles')
+              .update({ last_sign_in_at: new Date().toISOString() })
+              .eq('id', s.user.id)
+              .then(() => {});
+          }
           await handleAuthChange(s);
           setLoading(false);
         }
@@ -101,6 +150,7 @@ export function AuthProvider({ children }) {
   return (
     <AuthContext.Provider value={{
       session, user, profile, loading, isMentor,
+      accountBlock, clearAccountBlock,
       signIn, signUp, signInWithOAuth, signOut, updateProfile,
     }}>
       {children}
