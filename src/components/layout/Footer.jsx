@@ -36,14 +36,15 @@ export default function Footer() {
           {/* Support */}
           <div>
             <h4 className="footer__heading">고객지원</h4>
-            <p className="footer__contact">support@sangdam.space</p>
-            <p className="footer__contact">02-1234-5678</p>
+            <p className="footer__contact">aebon@dreamitbiz.com</p>
+            <p className="footer__contact">010-3700-0629</p>
+            <p className="footer__contact">카카오톡: aebon</p>
             <p className="footer__contact footer__contact--small">평일 09:00 - 18:00</p>
           </div>
         </div>
 
         <div className="footer__bottom">
-          &copy; 2025 Career Navigator. All rights reserved.
+          &copy; 2020-{new Date().getFullYear()} DreamIT Biz. All rights reserved.
         </div>
       </div>
     </footer>
