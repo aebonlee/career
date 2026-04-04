@@ -15,7 +15,7 @@ export function AuthProvider({ children }) {
 
   const fetchProfile = useCallback(async (userId) => {
     const { data, error } = await supabase
-      .from('career_profiles')
+      .from('user_profiles')
       .select('*')
       .eq('id', userId)
       .single();
@@ -91,8 +91,20 @@ export function AuthProvider({ children }) {
       async (event, s) => {
         if (mounted) {
           if (event === 'SIGNED_IN' && s?.user) {
+            const hostname = window.location.hostname;
+            // Update last sign-in and visited_sites tracking
+            const { data: profileData } = await supabase
+              .from('user_profiles')
+              .select('visited_sites')
+              .eq('id', s.user.id)
+              .single();
+            const sites = Array.isArray(profileData?.visited_sites) ? profileData.visited_sites : [];
+            const updates = { last_sign_in_at: new Date().toISOString() };
+            if (!sites.includes(hostname)) {
+              updates.visited_sites = [...sites, hostname];
+            }
             supabase.from('user_profiles')
-              .update({ last_sign_in_at: new Date().toISOString() })
+              .update(updates)
               .eq('id', s.user.id)
               .then(() => {});
           }
@@ -116,11 +128,26 @@ export function AuthProvider({ children }) {
       options: { data: { full_name: fullName } },
     });
     if (error) throw error;
+
+    // Create user_profiles record after successful signUp
+    if (data?.user) {
+      await supabase.from('user_profiles').upsert({
+        id: data.user.id,
+        email: data.user.email,
+        full_name: fullName || '',
+        signup_domain: window.location.hostname,
+        visited_sites: [window.location.hostname],
+      }, { onConflict: 'id' });
+    }
+
     return data;
   };
 
   const signInWithOAuth = async (provider) => {
-    const { data, error } = await supabase.auth.signInWithOAuth({ provider });
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider,
+      options: { redirectTo: window.location.origin },
+    });
     if (error) throw error;
     return data;
   };
@@ -137,7 +164,7 @@ export function AuthProvider({ children }) {
   const updateProfile = async (updates) => {
     if (!user) throw new Error('No authenticated user');
     const { data, error } = await supabase
-      .from('career_profiles')
+      .from('user_profiles')
       .update(updates)
       .eq('id', user.id)
       .select()
