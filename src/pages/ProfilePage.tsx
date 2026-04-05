@@ -26,7 +26,7 @@ export default function ProfilePage() {
       await updateProfile(form);
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
     } finally {
       setLoading(false);

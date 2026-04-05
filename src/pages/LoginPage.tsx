@@ -19,7 +19,7 @@ export default function LoginPage() {
     try {
       await signIn(email, password);
       navigate('/');
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message || '로그인에 실패했습니다.');
     } finally {
       setLoading(false);

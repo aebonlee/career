@@ -23,7 +23,7 @@ export default function RegisterPage() {
     try {
       await signUp(form.email, form.password, form.fullName);
       navigate('/');
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message || '회원가입에 실패했습니다.');
     } finally {
       setLoading(false);
