@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect, useCallback, useMemo } 
 import { supabase } from '../lib/supabase';
 import { useAuth } from './AuthContext';
 
-const NotificationContext = createContext(null);
+const NotificationContext = createContext<any>(null);
 
 export function NotificationProvider({ children }) {
   const { user } = useAuth();

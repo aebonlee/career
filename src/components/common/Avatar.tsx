@@ -1,6 +1,6 @@
 import { cn, getInitials } from '../../utils';
 
-export default function Avatar({ src, name, size = 'md', className }) {
+export default function Avatar({ src, name, size = 'md', className }: any) {
   if (src) {
     return (
       <div className={cn('avatar', `avatar--${size}`, className)}>

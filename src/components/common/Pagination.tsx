@@ -1,6 +1,6 @@
 import { cn } from '../../utils';
 
-export default function Pagination({ currentPage, totalPages, onPageChange }) {
+export default function Pagination({ currentPage, totalPages, onPageChange }: any) {
   if (totalPages <= 1) return null;
 
   const pages = [];

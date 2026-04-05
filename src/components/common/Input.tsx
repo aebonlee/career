@@ -1,6 +1,6 @@
 import { cn } from '../../utils';
 
-export default function Input({ label, error, helperText, icon, type = 'text', className, ...props }) {
+export default function Input({ label, error, helperText, icon, type = 'text', className, ...props }: any) {
   const inputClass = cn(
     type === 'textarea' ? 'form-textarea' : type === 'select' ? 'form-select' : 'form-input',
     icon && (type !== 'select' ? 'form-input--has-icon' : ''),

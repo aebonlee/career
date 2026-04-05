@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { cn } from '../../utils';
 
-export default function FileUpload({ onFileSelect, accept = '.pdf,.doc,.docx', maxSize = 10, label = '파일 업로드' }) {
+export default function FileUpload({ onFileSelect, accept = '.pdf,.doc,.docx', maxSize = 10, label = '파일 업로드' }: any) {
   const [dragActive, setDragActive] = useState(false);
   const [fileName, setFileName] = useState('');
   const [error, setError] = useState('');

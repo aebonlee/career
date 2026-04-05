@@ -1,6 +1,6 @@
 import { cn } from '../../utils';
 
-export default function Tabs({ tabs, activeTab, onChange }) {
+export default function Tabs({ tabs, activeTab, onChange }: any) {
   return (
     <div className="tabs">
       {tabs.map(tab => (

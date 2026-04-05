@@ -1,4 +1,4 @@
-export default function EmptyState({ icon, title, description, action }) {
+export default function EmptyState({ icon, title, description, action }: any) {
   return (
     <div className="empty-state">
       {icon && <div className="empty-state__icon">{icon}</div>}

@@ -1,6 +1,6 @@
 import { cn } from '../../utils';
 
-export default function StarRating({ rating = 0, maxStars = 5, size = 'md', interactive, onChange }) {
+export default function StarRating({ rating = 0, maxStars = 5, size = 'md', interactive, onChange }: any) {
   return (
     <span className={cn('star-rating', `star-rating--${size}`, interactive && 'star-rating--interactive')}>
       {Array.from({ length: maxStars }, (_, i) => (

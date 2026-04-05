@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useMemo } from 'react';
 
-function Particle({ index }) {
+function Particle({ index }: any) {
   const style = useMemo(() => ({
     width: 4 + Math.random() * 8,
     height: 4 + Math.random() * 8,

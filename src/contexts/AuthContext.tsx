@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { supabase } from '../lib/supabase';
 
-const AuthContext = createContext(null);
+const AuthContext = createContext<any>(null);
 
 export function AuthProvider({ children }) {
   const [session, setSession] = useState(null);
@@ -32,10 +32,10 @@ export function AuthProvider({ children }) {
         .single();
       if (upData) {
         const updates = {};
-        if (!upData.signup_domain) updates.signup_domain = currentDomain;
-        const sites = Array.isArray(upData.visited_sites) ? upData.visited_sites : [];
+        if (!(upData as any).signup_domain) (updates as any).signup_domain = currentDomain;
+        const sites = Array.isArray((upData as any).visited_sites) ? (upData as any).visited_sites : [];
         if (!sites.includes(currentDomain)) {
-          updates.visited_sites = [...sites, currentDomain];
+          (updates as any).visited_sites = [...sites, currentDomain];
         }
         if (Object.keys(updates).length > 0) {
           supabase.from('user_profiles').update(updates).eq('id', userId).then(() => {});
@@ -98,10 +98,10 @@ export function AuthProvider({ children }) {
               .select('visited_sites')
               .eq('id', s.user.id)
               .single();
-            const sites = Array.isArray(profileData?.visited_sites) ? profileData.visited_sites : [];
+            const sites = Array.isArray(profileData?.visited_sites) ? (profileData as any).visited_sites : [];
             const updates = { last_sign_in_at: new Date().toISOString() };
             if (!sites.includes(hostname)) {
-              updates.visited_sites = [...sites, hostname];
+              (updates as any).visited_sites = [...sites, hostname];
             }
             supabase.from('user_profiles')
               .update(updates)

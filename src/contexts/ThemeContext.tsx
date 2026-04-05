@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 
-const ThemeContext = createContext(null);
+const ThemeContext = createContext<any>(null);
 
 const ACCENT_PRESETS = ['blue', 'indigo', 'violet', 'emerald', 'rose', 'amber'];
 

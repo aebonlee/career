@@ -2,7 +2,7 @@ import { cn } from '../../utils';
 
 export default function Button({
   children, variant = 'primary', size = 'md', fullWidth, loading, disabled, onClick, type = 'button', className, style, ...rest
-}) {
+}: any) {
   return (
     <button
       type={type}
