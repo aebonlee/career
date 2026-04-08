@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase, setSharedSession, getSharedSession, clearSharedSession } from '../lib/supabase';
 
 const AuthContext = createContext<any>(null);
 
@@ -82,14 +82,28 @@ export function AuthProvider({ children }) {
       return;
     }
     let mounted = true;
-    supabase.auth.getSession().then(({ data: { session: s } }) => {
+    supabase.auth.getSession().then(async ({ data: { session: s } }) => {
       if (mounted) {
+        if (s?.refresh_token) {
+          setSharedSession(s.refresh_token);
+        } else {
+          const rt = getSharedSession();
+          if (rt) {
+            try {
+              const { data } = await supabase!.auth.refreshSession({ refresh_token: rt });
+              if (!data.session) clearSharedSession();
+            } catch { clearSharedSession(); }
+          }
+        }
         handleAuthChange(s).then(() => setLoading(false));
       }
     });
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, s) => {
         if (mounted) {
+          if (s?.refresh_token) setSharedSession(s.refresh_token);
+          if (event === 'SIGNED_OUT') clearSharedSession();
+
           if (event === 'SIGNED_IN' && s?.user) {
             const hostname = window.location.hostname;
             // Update last sign-in and visited_sites tracking
