@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-DAs1UGHr.js";import{t}from"./utils-DezcL626.js";var n=e();function r({tabs:e,activeTab:r,onChange:i}){return(0,n.jsx)(`div`,{className:`tabs`,children:e.map(e=>(0,n.jsx)(`button`,{className:t(`tabs__tab`,r===e.key&&`tabs__tab--active`),onClick:()=>i(e.key),children:e.label},e.key))})}export{r as t};
