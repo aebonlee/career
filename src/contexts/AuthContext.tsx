@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { supabase, setSharedSession, getSharedSession, clearSharedSession } from '../lib/supabase';
+import { ADMIN_EMAILS } from '../config/admin';
 
 const AuthContext = createContext<any>(null);
 
@@ -9,6 +10,7 @@ export function AuthProvider({ children }) {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isMentor, setIsMentor] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [accountBlock, setAccountBlock] = useState(null);
 
   const clearAccountBlock = () => setAccountBlock(null);
@@ -69,10 +71,12 @@ export function AuthProvider({ children }) {
     setSession(currentSession);
     setUser(currentSession?.user ?? null);
     if (currentSession?.user) {
+      setIsAdmin(ADMIN_EMAILS.includes(currentSession.user.email?.toLowerCase() || ''));
       await fetchProfile(currentSession.user.id);
     } else {
       setProfile(null);
       setIsMentor(false);
+      setIsAdmin(false);
     }
   }, [fetchProfile]);
 
@@ -190,7 +194,7 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={{
-      session, user, profile, loading, isMentor,
+      session, user, profile, loading, isMentor, isAdmin,
       accountBlock, clearAccountBlock,
       signIn, signUp, signInWithOAuth, signOut, updateProfile,
     }}>

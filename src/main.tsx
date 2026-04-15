@@ -12,6 +12,7 @@ import './styles/components.css';
 import './styles/layout.css';
 import './styles/landing.css';
 import './styles/pages.css';
+import './styles/admin.css';
 import './styles/responsive.css';
 import './styles/dark-mode.css';
 

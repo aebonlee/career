@@ -8,6 +8,7 @@ import LoadingSpinner from './components/common/LoadingSpinner';
 import ScrollToTop from './components/common/ScrollToTop';
 import ProtectedRoute from './components/common/ProtectedRoute';
 import RoleGuard from './components/common/RoleGuard';
+import AdminGuard from './components/AdminGuard';
 
 // Lazy loaded pages
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -29,6 +30,7 @@ const GuideDetailPage = lazy(() => import('./pages/GuideDetailPage'));
 const CoursesPage = lazy(() => import('./pages/CoursesPage'));
 const MentoringPage = lazy(() => import('./pages/MentoringPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
 
 function PageLoader() {
   return (
@@ -77,6 +79,8 @@ export default function App() {
                     </RoleGuard>
                   } />
                 </Route>
+
+                <Route path="admin" element={<AdminGuard><AdminDashboard /></AdminGuard>} />
 
                 <Route path="*" element={<NotFoundPage />} />
               </Route>
