@@ -132,16 +132,6 @@ export function AuthProvider({ children }) {
         }
       }
     );
-
-  // 10분 무동작 세션 타임아웃
-  useIdleTimeout({
-    enabled: !!user,
-    onTimeout: () => {
-      supabase.auth.signOut();
-      clearSharedSession();
-    },
-  });
-
     return () => { mounted = false; subscription.unsubscribe(); };
   }, [handleAuthChange]);
 
@@ -202,6 +192,16 @@ export function AuthProvider({ children }) {
     setProfile(data);
     return data;
   };
+
+
+  // 10분 무동작 세션 타임아웃
+  useIdleTimeout({
+  enabled: !!user,
+  onTimeout: () => {
+  supabase.auth.signOut();
+  clearSharedSession();
+  },
+  });
 
   return (
     <AuthContext.Provider value={{
