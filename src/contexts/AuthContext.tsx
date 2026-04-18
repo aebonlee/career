@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect, useCallback } from 'rea
 import { supabase, setSharedSession, getSharedSession, clearSharedSession } from '../lib/supabase';
 import { ADMIN_EMAILS } from '../config/admin';
 import { useIdleTimeout } from '../hooks/useIdleTimeout';
+import ProfileCompleteModal from '../components/ProfileCompleteModal';
 
 const AuthContext = createContext<any>(null);
 
@@ -202,6 +203,9 @@ export function AuthProvider({ children }) {
   clearSharedSession();
   },
   });
+  const refreshProfile = useCallback(async () => { if (user) { const p = await fetchProfile(user.id); setProfile(p); } }, [user, fetchProfile]);
+  const needsProfileCompletion = !!user && !!profile && (!profile.name || !profile.phone);
+
 
   return (
     <AuthContext.Provider value={{
@@ -210,6 +214,9 @@ export function AuthProvider({ children }) {
       signIn, signUp, signInWithOAuth, signOut, updateProfile,
     }}>
       {children}
+      {needsProfileCompletion && user && (
+        <ProfileCompleteModal user={user} onComplete={refreshProfile} />
+      )}
     </AuthContext.Provider>
   );
 }
