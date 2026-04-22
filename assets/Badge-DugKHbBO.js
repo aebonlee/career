@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-DAs1UGHr.js";import{t}from"./utils-CvTDzKmH.js";var n=e();function r({children:e,variant:r=`primary`,className:i}){return(0,n.jsx)(`span`,{className:t(`badge`,`badge--${r}`,i),children:e})}export{r as t};
