@@ -13,6 +13,11 @@
     --nav-height: 64px;
   }
 
+  /* Touch target minimum size */
+  .btn, .nav-login-btn, button:not(.mobile-toggle) {
+      min-height: 44px;
+  }
+
   .container { padding: 0 16px; }
 
   .section-title { font-size: 1.75rem; }
